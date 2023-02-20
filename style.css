@@ -495,7 +495,7 @@ body {
 .footer-subscribe {}
 
 .footer-subscribe-label {
-    display: block;
+    color: #FFF;
     margin: 0;
     margin-bottom: 16px;
     font-weight: 500;
