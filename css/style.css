@@ -149,6 +149,18 @@ ul {
     color: var(--dark);
 }
 
+.menu-item:hover,
+.menu-item:focus {
+    color: var(--pressed-state);
+}
+
+.address-mail:hover,
+.address-mail:focus,
+.address-phone:hover,
+.address-phone:focus {
+    color: var(--pressed-state);
+}
+
 @media screen and (min-width: 768px) {
     .mobile-menu-open {
         display: none;
@@ -738,6 +750,7 @@ ul {
 }
 
 .footer-text {
+    line-height: 1.5;
     color: var(--accent);
 }
 
@@ -845,6 +858,63 @@ ul {
     background-color: var(--pressed-state);
 }
 
+@media screen and (min-width: 768px) {
+    .footer .container {
+        padding-left: 108px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 72px 24px;
+    }
+
+    .container-text {
+        width: 264px;
+        margin-bottom: 0;
+    }
+
+    .footer-logo {
+        justify-content: flex-start;
+    }
+
+    .social-media {
+        margin-bottom: 0;
+    }
+
+    .footer-social-text {
+        text-align: left;
+
+    }
+
+    .footer-subscribe-label {
+        text-align: left;
+    }
+
+    .subscribe-form {
+        flex-direction: row;
+    }
+
+    .footer-subscribe-input {
+        width: 264px;
+        margin-bottom: 0;
+        margin-right: 24px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .footer .container {
+        justify-content: flex-start;
+        padding-left: 15px;
+        gap: 0;
+    }
+
+    .container-text {
+        margin-right: 120px;
+    }
+
+    .social-media {
+        margin-right: 80px;
+    }
+}
+
 /* ======================FOOTER=================== */
 
 /* =================MOBILE_MENU==================== */
@@ -909,6 +979,11 @@ ul {
     letter-spacing: 0.02em;
 }
 
+.mobile-menu-item_menu:hover,
+.mobile-menu-item_menu:focus {
+    color: var(--primary-brand);
+}
+
 .mobile-menu-list_cont {
     display: flex;
     flex-direction: column;
@@ -918,6 +993,16 @@ ul {
 }
 
 .mobile-menu-item_phone {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+}
+
+.mobile-menu-item_phone:hover,
+.mobile-menu-item_phone:focus,
+.mobile-menu-item_mail:hover,
+.mobile-menu-item_mail:focus {
     font-weight: 600;
     font-size: 36px;
     line-height: 1.11;
@@ -955,3 +1040,203 @@ ul {
 }
 
 /* =================MOBILE_MENU==================== */
+/* =================MODAL==================== */
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background-color: var(--modal-overlay);
+    transform: scale(1);
+    transition: opacity 400ms linear, transform 400ms linear, visibility 400ms linear;
+}
+
+.backdrop.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: scale(0);
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 392px;
+    padding: 72px 16px 24px 16px;
+    transform: translate(-50%, -50%);
+    background-color: #FCFCFC;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
+        0px 1px 3px rgba(0, 0, 0, 0.12),
+        0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--accent);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0;
+    cursor: pointer;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-close-btn-icon {
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+    background-color: var(--pressed-state);
+}
+
+.modal-close-btn:hover .modal-close-btn-icon,
+.modal-close-btn:focus .modal-close-btn-icon {
+    fill: #FFF;
+}
+
+.modal-header {
+    text-align: center;
+    margin: 0;
+    margin-bottom: 16px;
+}
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-form-lab {
+    position: relative;
+    margin-bottom: 4px;
+    font-size: 12px;
+    line-height: 2;
+    letter-spacing: 0.04em;
+    color: var(--subtle-text);
+}
+
+.modal-form-in {
+    width: 100%;
+    height: 40px;
+    border: 1px solid rgba(33, 33, 33, 0.2);
+    border-radius: 4px;
+    padding: 0;
+    padding-left: 38px;
+    transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-form-in:focus {
+    outline: none;
+    border: 1px solid var(--primary-brand);
+}
+
+.modal-form-in-icon {
+    position: absolute;
+    display: block;
+    left: 16px;
+    top: 70%;
+    transform: translate(0, -50%);
+    fill: var(--dark);
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-form-in:focus+.modal-form-in-icon {
+    fill: var(--primary-brand);
+}
+
+.modal-form-comment {
+    resize: none;
+    width: 100%;
+    height: 120px;
+    padding: 8px 16px;
+    border: 1px solid rgba(33, 33, 33, 0.2);
+    border-radius: 4px;
+    transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 12px;
+}
+
+.modal-form-comment:placeholder-shown {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: rgba(117, 117, 117, 0.5);
+}
+
+.modal-form-comment:focus {
+    outline: none;
+    border: 1px solid var(--primary-brand);
+}
+
+.modal-form-check-lab {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    line-height: 2;
+    margin-bottom: 24px;
+    color: #757575;
+}
+
+.modal-form-check-link {
+    color: var(--primary-brand);
+}
+
+.modal-form-check-lab::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    display: block;
+    background-image: url(../images/check-off.svg);
+    cursor: pointer;
+    margin-right: 8px;
+    transition: background-image 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        outline 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-form-check:checked+.modal-form-check-lab::before {
+    background-image: url(../images/check-on.svg);
+}
+
+.modal-form-check:focus+.modal-form-check-lab::before {
+    outline: 1px solid var(--primary-brand);
+}
+
+.modal-form-send {
+    display: flex;
+    align-self: center;
+    padding: 16px 32px;
+    color: #FFF;
+    background: var(--primary-brand);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border: none;
+    border-radius: 4px;
+    transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1)
+}
+
+.modal-form-send-span {
+    line-height: 1.5;
+    width: 105px;
+}
+
+.modal-form-send:hover,
+.modal-form-send:focus {
+    background: var(--pressed-state);
+}
+
+@media screen and (min-width: 768px) {
+    .modal {
+        width: 408px;
+    }
+
+}
+
+/* =================MODAL==================== */
